@@ -4,9 +4,21 @@
     <div class="col-10">
       <div class="card">
         <div class="card-body">
-          <wavesurfer id="wavesurfer2"
-            [trackurl]="'https://www.kennethcaple.com/api/mp3/richinlovemutedguitarechoing.mp3'"
-            [wavesurferOptions]="{backgroundColor: 'black',waveColor:'white',cursorColor:'grey'}"></wavesurfer>
+          <div class="d-flex justify-content-between">
+            <span id="time-current">0:00</span>
+            <span id="time-remain">0:00</span>
+          </div>
+          <div id="waveform"></div>
+          
+          <div *ngIf="wave" class="controls">
+            <button mat-mini-fab (click)="!wave.isPlaying() ? playWaveform() : pauseWaveform()">
+              <mat-icon *ngIf="!wave.isPlaying()">play_arrow</mat-icon>
+              <mat-icon *ngIf="wave.isPlaying()">pause</mat-icon>
+            </button>
+            <button mat-mini-fab (click)="stopWaveform()">
+              <mat-icon>stop</mat-icon>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -19,7 +31,14 @@
     <div class="col-10">
       <div class="card">
         <div class="card-body">
-          Sound waves here!
+          <button mat-mini-fab (click)="startMicro()">
+            <mat-icon>fiber_manual_record</mat-icon>
+          </button>
+          <button mat-mini-fab (click)="startMicro()">
+            <mat-icon>stop</mat-icon>
+          </button>
+          <!-- <button (click)="startMicro()">start device</button> -->
+          <div id="waveform-micro"></div>
         </div>
       </div>
     </div>
@@ -47,6 +66,7 @@
     <div class="col-6" style="text-align: right;">
       <div class="row">
         <div class="col-3">
+
           <button mat-raised-button [matMenuTriggerFor]="dist">DIST</button>
           <mat-menu #dist="matMenu">
             <mat-slider vertical min="1" max="5" step="0.5" value="1.5"></mat-slider>
