@@ -31,7 +31,7 @@ export class AudComponent implements OnInit {
         waveColor: 'violet',
         progressColor: 'purple',
         plugins: [],
-        height: 30,
+        height: 100,
         maxCanvasWidth: 500
       });
 
