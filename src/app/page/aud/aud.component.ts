@@ -71,6 +71,12 @@ export class AudComponent implements OnInit {
 
   stopWaveform() {
     this.wave.stop();
+    const totalTime = Math.floor(this.wave.getDuration());
+    const remainElement = document.getElementById('time-remain');
+    remainElement!.innerText = `${Math.floor(totalTime / 60)}:${(totalTime % 60) < 10 ? '0' : ''}${totalTime % 60}`;
+
+    const currentElement = document.getElementById('time-current');
+    currentElement!.innerText = '0:00'
   }
 
   playWaveform() {

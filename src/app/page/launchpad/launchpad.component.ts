@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class LaunchpadComponent implements OnInit {
 
   constructor() { }
-  columnNumber = 8;
-  lengthButtons = 64;
+  columnNumber = 6;
+  lengthButtons = 36;
   lstButtons = Array(this.lengthButtons).fill(null).map((item, index) => index)
   ngOnInit(): void {
   }
